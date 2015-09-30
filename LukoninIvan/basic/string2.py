@@ -1,4 +1,5 @@
 #!/usr/bin/python -tt
+# coding=UTF8
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -15,6 +16,9 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
+
+import re
+
 def verbing(s):
   # +++your code here+++
   result = s
@@ -37,8 +41,16 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  result = s
+
+  # да, мне лениво было писать циклы и проверки
+
+  mask = re.compile(r"not\s.*\sbad", re.IGNORECASE) 
+  not_bad = mask.search(s)
+  if( not_bad ):
+    result = s.replace(not_bad.group(), "good")
+
+  return result
 
 
 # F. front_back
