@@ -42,7 +42,17 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
   # +++your code here+++
-  return
+  words.sort()
+  copy_words = []
+
+  i = 0
+  while words[0][0] != 'x':
+    copy_words.append(words[0])
+    words.pop(0)
+
+  words.extend(copy_words)
+
+  return  words
 
 
 
