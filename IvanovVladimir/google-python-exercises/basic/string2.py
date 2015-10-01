@@ -17,8 +17,12 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
-
+  if len(s) >= 3:
+    if s[-3:] == "ing":
+      s += "ly"
+    else:
+      s += "ing"
+  return s
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -30,7 +34,12 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
+  not_position = s.find("not")
+  bad_position = s.find("bad")+3
+  if not_position < bad_position:
+    return s.replace(s[not_position:bad_position], "good")
+  return s
+
 
 
 # F. front_back
@@ -42,7 +51,15 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  if len(a) % 2 == 0 and len(b) % 2 == 0:
+    return a[:(len(a)/2)] + b[:(len(b)/2)] + a[(len(a)/2):] + b[(len(b)/2):]
+  elif len(a) % 2 == 1 and len(b) % 2 == 1:
+    return a[:((len(a)/2) + 1)] + b[:((len(b)/2) + 1)] + a[((len(a)/2) + 1):] + b[((len(b)/2) + 1):]
+  elif len(a) % 2 == 0 and len(b) % 2 == 1:
+    return a[:(len(a)/2)] + b[:((len(b)/2) + 1)] + a[(len(a)/2):] + b[((len(b)/2) + 1):]
+  else:
+    return a[:((len(a)/2) + 1)] + b[:(len(b)/2)] + a[((len(a)/2) + 1):] + b[(len(b)/2):]
+
 
 
 # Simple provided test() function used in main() to print
