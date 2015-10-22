@@ -79,7 +79,7 @@ def main():
   full=""
   for item in args:
     res = extract_names(item)
-    full += '\n'.join(res) + '\n'
+    full += '\n'.join(res)
   if summary:
     dirname = os.path.dirname(args[0])
     print dirname
